@@ -2,22 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+[RequireComponent(typeof(Rigidbody2D))]
 public class enemy : MonoBehaviour
 {
     private int hp = 1;
+    private int moveSpeed = 1;
     [SerializeField] private int maxHP = 1;
     [SerializeField] private AudioClip deathSound;
     private AudioSource audioSource;
 
-
+    Rigidbody2D rb;
+    Vector2 direction;
+    private Transform playerTransform;
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
+        //playerTransform = Player.GetInstance().transform;
+        player = Player.GetInstance();
         hp = maxHP;
 
         // Find AudioManager in the scene
         Audiomanager audioManager = Audiomanager.GetInstance();
+        
 
         if (audioManager != null)
         {
@@ -33,6 +43,7 @@ public class enemy : MonoBehaviour
 
     private void OnEnable()
     {
+        rb = GetComponent<Rigidbody2D>();
         hp = maxHP;
     }
     // Update is called once per frame
@@ -42,6 +53,12 @@ public class enemy : MonoBehaviour
         {
             Die();
         }
+        if (player != null)
+        {
+            direction = (player.transform.position - gameObject.transform.position).normalized;
+            rb.velocity = direction * moveSpeed;
+        }
+        
     }
 
     public void TakeDMG(int dmg)

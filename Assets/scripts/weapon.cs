@@ -12,8 +12,8 @@ public class weapon : MonoBehaviour //probably make a struct
     [SerializeField] float baseTimer;
     [SerializeField] float timer;
     [SerializeField] float scale;
-    [SerializeField] float projectileSpeed;
-    [SerializeField] float durationTimer;
+    [SerializeField] public float projectileSpeed;
+    [SerializeField] public float durationTimer;
     [SerializeField] float timeAlive;
          
     
