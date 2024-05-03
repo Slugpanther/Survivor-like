@@ -16,6 +16,11 @@ public class scythe : MonoBehaviour
         wp.durationTimer = 5f;
     }
 
+    public void lvlUp()
+    {
+
+    }
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();

@@ -62,7 +62,6 @@ public class ObjectPool : MonoBehaviour
         {
             if (pool.objectToPool.ToString() == obj.ToString())
             {
-                Debug.Log(obj.GetType());
                 poolIndex %= pool.poolCount;
                 GameObject p = pool.pooledObjects[poolIndex++];
                 p.GetComponent<IPoolable>().Reset();

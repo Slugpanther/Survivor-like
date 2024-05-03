@@ -20,9 +20,10 @@ public class weapon : MonoBehaviour, IPoolable //probably make a interface?
     {
         
     }
-    public void LevelUpWeapon() //make it virtual when interface?
+    public virtual void LevelUpWeapon() //make it virtual when interface?
     {
         //define it in each specific weapon script
+        lvl++;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

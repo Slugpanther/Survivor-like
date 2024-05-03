@@ -26,7 +26,6 @@ public class ExpGem : MonoBehaviour, IPoolable
     }
     void OnTriggerEnter2D(Collider2D collision) //gives exp
     {
-        Debug.Log("exp hit");
         Collider2D hitCollider = collision;
         if (hitCollider.gameObject.tag == "Player") 
         {

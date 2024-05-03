@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     private float x, y;
     public int currentLvl = 1;
-    int exp;
+    public int exp;
     public int expToLvl;
 
 
@@ -101,9 +101,11 @@ public class Player : MonoBehaviour
     public void GainExp(int value) //call this when collecting exp gems
     {
         exp += value;
+        Debug.Log(exp);
         if (exp >= expToLvl)
         {
             LevelUp();
+            Debug.Log("level up");
         }
     }
 
