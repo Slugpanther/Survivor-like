@@ -11,9 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] weapons = new GameObject[8]; //change gameobject to access the attributes of weapon.cs
     [SerializeField] private Transform forwardWeaponSpawn;
 
-    int rngWeaponSpawnAmount; 
+    int rngWeaponSpawnAmount;
 
     private float x, y;
+    public int currentLvl = 1;
+    int exp;
+    public int expToLvl;
+
 
     private static Player Instance;
 
@@ -24,7 +28,7 @@ public class Player : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -46,11 +50,18 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             rngWeaponSpawnAmount = Random.Range(1, 11);
+
+
             for (int i = 0; i < rngWeaponSpawnAmount; i++)
             {
-                Instantiate(weapons[0], gameObject.transform.position, Quaternion.identity);
+                GameObject wpToSpawn = ObjectPool.GetInstance().GetPooledObject(weapons[0]); //gets anything from the pool
+                wpToSpawn.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+                wpToSpawn.SetActive(true);
+                //Instantiate(weapons[0], gameObject.transform.position, Quaternion.identity);
+                //new List<GameObject>().Add(weapons[0]);
             }
         }
+        if (weapons[1]) { }
 
 
 
@@ -66,10 +77,41 @@ public class Player : MonoBehaviour
         */
     }
 
+    void AddWeapon(GameObject newWeapon)
+    {
+        bool spaceFound = false;
+        for (int i = 0; i < weapons.Length && !spaceFound; i++)
+        {
+            if (weapons[i] == null)
+            {
+                spaceFound = true;
+                weapons[i] = newWeapon;
+            }
+        }
+
+    }
+
     void FixedUpdate()
     {
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
-        rb.velocity = new Vector2(x, y)*speed;
+        rb.velocity = new Vector2(x, y) * speed;
+    }
+
+    public void GainExp(int value) //call this when collecting exp gems
+    {
+        exp += value;
+        if (exp >= expToLvl)
+        {
+            LevelUp();
+        }
+    }
+
+    void LevelUp()
+    {
+        exp = 0;
+        expToLvl = currentLvl * 5;
+        currentLvl++;
+        //trigger lvl up stat effects and weapon choice
     }
 }

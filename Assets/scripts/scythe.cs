@@ -6,11 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(weapon))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class scythe : MonoBehaviour
-
+    //public class scythe : weapon
 {
     Rigidbody2D rb;
     weapon wp;
-    
+
+    public void Reset()
+    {
+        wp.durationTimer = 5f;
+    }
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,11 +31,12 @@ public class scythe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position += Vector3.right * 5f * Time.deltaTime;
+        //put this in weapon later
         wp.durationTimer -= Time.deltaTime;
         if (wp.durationTimer <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
     }

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 2
   deathSound: {fileID: 8300000, guid: a209e45519bad2c4c8779a754c69c8ee, type: 3}
+  expGem: {fileID: 8759152817728326273, guid: dd9c0880308ac494995dae596b010353, type: 3}
 --- !u!61 &1977660271850777347
 BoxCollider2D:
   m_ObjectHideFlags: 0

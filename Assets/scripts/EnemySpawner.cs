@@ -14,36 +14,19 @@ public class EnemySpawner : MonoBehaviour
     int rngEnemyAmount = 2;
     float randomAngle;
     float randomDistance;
-    float minDistance = 3f;
+    float minDistance = 4f;
     float maxDistance = 6f;
     Vector2 spawnOffset;
 
-    float spawnTime = 5;
-    float timer = 0;
+    float spawnTime = 4;
+    //float timer = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(SpawnEnemy()); //check this when we change enemy types later on/after x minutes
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        timer += Time.deltaTime;
-        if (timer > spawnTime)
-        {
-            Randomizeposition();
-            timer = 0;
-            for (int i = 0; i < rngEnemyAmount; i++)
-            {
-                Instantiate(enemyType[randomEnemy], randomPosition, Quaternion.identity);
-                Randomizeposition();
-            }
-            rngEnemyAmount = Random.Range(0, 7);
-            randomEnemy = Random.Range(0, enemyType.Length);
-        }
-    }
+    
 
     void Randomizeposition()
     {
@@ -58,5 +41,24 @@ public class EnemySpawner : MonoBehaviour
 
         // Calculate the spawn position
         randomPosition = (Vector2)player.transform.position + spawnOffset;
+    }
+
+    public IEnumerator SpawnEnemy()
+    {
+        while (true)
+        {
+            Randomizeposition();
+            for (int i = 0; i < rngEnemyAmount; i++) //change this to take out rng amount later?
+            {
+                Instantiate(enemyType[randomEnemy], randomPosition, Quaternion.identity);
+                Randomizeposition();
+            }
+            rngEnemyAmount = Random.Range(0, 7);
+            randomEnemy = Random.Range(0, enemyType.Length);
+
+
+            yield return new WaitForSeconds(spawnTime);
+        }
+            
     }
 }

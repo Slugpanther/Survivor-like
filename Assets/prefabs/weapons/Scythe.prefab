@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5429649668711802744}
   - component: {fileID: 2305311693784107085}
+  - component: {fileID: 7368495666714711172}
   - component: {fileID: 6877707524105130330}
   - component: {fileID: 4827106803967933223}
-  - component: {fileID: 7368495666714711172}
   m_Layer: 0
   m_Name: Scythe
   m_TagString: Untagged
@@ -71,6 +71,33 @@ CircleCollider2D:
   m_Offset: {x: -0.022559846, y: 0}
   serializedVersion: 2
   m_Radius: 0.111466944
+--- !u!50 &7368495666714711172
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383804800259771555}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &6877707524105130330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,33 +129,6 @@ MonoBehaviour:
   projectileSpeed: 5
   durationTimer: 0
   timeAlive: 0
---- !u!50 &7368495666714711172
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383804800259771555}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &8700909824329332394
 GameObject:
   m_ObjectHideFlags: 0

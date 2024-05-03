@@ -11,11 +11,11 @@ public class enemy : MonoBehaviour
     private int moveSpeed = 1;
     [SerializeField] private int maxHP = 1;
     [SerializeField] private AudioClip deathSound;
+    [SerializeField] private GameObject expGem;
     private AudioSource audioSource;
 
     Rigidbody2D rb;
     Vector2 direction;
-    private Transform playerTransform;
     private Player player;
 
     // Start is called before the first frame update
@@ -68,9 +68,13 @@ public class enemy : MonoBehaviour
 
     void Die()
     {
-        
+        //Instantiate(expGem, transform.position, Quaternion.identity); //debugging
+        GameObject ExpGem = ObjectPool.GetInstance().GetPooledObject(expGem);
+        ExpGem.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+        ExpGem.SetActive(true);
         audioSource.clip = deathSound;
         audioSource.Play();
         Destroy(gameObject);
+        //gameObject.setActive(false) when pooled;
     }
 }
