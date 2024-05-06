@@ -8,6 +8,7 @@ using UnityEngine;
 public class enemy : MonoBehaviour
 {
     private int hp = 1;
+    private int dmg = 1;
     private int moveSpeed = 1;
     [SerializeField] private int maxHP = 1;
     [SerializeField] private AudioClip deathSound;
@@ -28,12 +29,12 @@ public class enemy : MonoBehaviour
         // Find AudioManager in the scene
         Audiomanager audioManager = Audiomanager.GetInstance();
         
+        //add player level observer to call ScaleStats(player.currentLvl)
 
         if (audioManager != null)
         {
             // Access the shared AudioSource from AudioManager
             audioSource = audioManager.sharedAudioSource;
-
         }
         else
         {
@@ -44,7 +45,9 @@ public class enemy : MonoBehaviour
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
+        ScaleStats(Player.GetInstance().currentLvl);
         hp = maxHP;
+        
     }
     // Update is called once per frame
     void Update()
@@ -66,9 +69,15 @@ public class enemy : MonoBehaviour
         hp -= dmg;
     }
 
+    public void ScaleStats(int playerLvl)
+    {
+        maxHP = maxHP + 1 + playerLvl * 2;
+        Debug.Log("HP: " + maxHP);
+        moveSpeed = moveSpeed + (int)playerLvl/5; //scale move a tout les 5 lvls
+    }
+
     void Die()
     {
-        //Instantiate(expGem, transform.position, Quaternion.identity); //debugging
         GameObject ExpGem = ObjectPool.GetInstance().GetPooledObject(expGem);
         ExpGem.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
         ExpGem.SetActive(true);

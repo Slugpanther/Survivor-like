@@ -16,9 +16,10 @@ public class scythe : MonoBehaviour
         wp.durationTimer = 5f;
     }
 
-    public void lvlUp()
+    public void lvlUp() //specifiy those when doing balance tests
     {
-
+        wp.dmg++;
+        wp.scale += 1.5f;
     }
 
     private void OnEnable()
@@ -26,6 +27,13 @@ public class scythe : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         wp = GetComponent<weapon>();
         wp.durationTimer = 5f;
+
+        //Scale weapons ONLY FOR LAB
+        for (int i = 1; i < Player.GetInstance().currentLvl; i++)
+        {
+            lvlUp();
+        }
+        Debug.Log("Scythe dmg: " + wp.dmg);
 
         // Generate a random direction vector
         Vector2 randomDirection = Random.insideUnitCircle.normalized;

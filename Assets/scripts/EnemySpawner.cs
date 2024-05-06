@@ -26,8 +26,6 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy()); //check this when we change enemy types later on/after x minutes
     }
 
-    
-
     void Randomizeposition()
     {
         // Calculate a random angle in radians
@@ -52,6 +50,10 @@ public class EnemySpawner : MonoBehaviour
             {
                 Instantiate(enemyType[randomEnemy], randomPosition, Quaternion.identity);
                 Randomizeposition();
+
+                //
+                // EnemyFactory.GetInstance().CreateWeakEnemy(enemyType[randomEnemy], randomPosition);
+                //
             }
             rngEnemyAmount = Random.Range(0, 7);
             randomEnemy = Random.Range(0, enemyType.Length);

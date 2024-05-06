@@ -9,7 +9,7 @@ public class lvlBar : MonoBehaviour
     public Text valueText; 
 
     private Player player;
-    private int playerPastLvl;
+    //private int playerPastLvl;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class lvlBar : MonoBehaviour
 
         slider.value = player.exp;
 
-        // Optional: Update the slider's value and UI Text with the initial int value
+        //Update the slider's value and UI Text with the initial int value
         if (valueText != null)
         {
             valueText.text = player.currentLvl.ToString();

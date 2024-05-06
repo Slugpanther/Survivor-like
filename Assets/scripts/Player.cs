@@ -36,8 +36,6 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -114,6 +112,13 @@ public class Player : MonoBehaviour
         exp = 0;
         expToLvl = currentLvl * 5;
         currentLvl++;
+
         //trigger lvl up stat effects and weapon choice
+
+        foreach (var weapon in weapons)
+        {
+            
+            
+        }
     }
 }

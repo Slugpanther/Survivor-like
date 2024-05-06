@@ -8,10 +8,10 @@ public class weapon : MonoBehaviour, IPoolable //probably make a interface?
 
     //apply the buffs to base stats of the weapon
     protected int lvl = 0;
-    [SerializeField] int dmg;
+    [SerializeField] public int dmg;
     [SerializeField] public float baseTimer;
     [SerializeField] public float timer;
-    [SerializeField] float scale;
+    [SerializeField] public float scale;
     [SerializeField] public float projectileSpeed;
     [SerializeField] public float durationTimer = 5f; //lifespan
     [SerializeField] float timeAlive; //only for weapons that do something after x seconds other than destroy  
@@ -20,7 +20,7 @@ public class weapon : MonoBehaviour, IPoolable //probably make a interface?
     {
         
     }
-    public virtual void LevelUpWeapon() //make it virtual when interface?
+    public void LevelUpWeapon() //make it virtual when interface?
     {
         //define it in each specific weapon script
         lvl++;
@@ -36,16 +36,8 @@ public class weapon : MonoBehaviour, IPoolable //probably make a interface?
         }
     }
 
-
-
-
-
-    /* DESPAWN WEAPONS
-        weapon.durationTimer -= Time.deltaTime;
-            if(weapon.durationTimer <= 0){
-                gameObject,setActive(false);
-            }
-    */
-
-
+    void OnEnable()
+    {
+        gameObject.transform.localScale = new Vector3(scale, scale, 1);
+    }
 }
