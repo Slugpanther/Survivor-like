@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private GameObject[] weapons = new GameObject[8]; //change gameobject to access the attributes of weapon.cs
     [SerializeField] private Transform forwardWeaponSpawn;
+    [SerializeField] private AudioClip deathSound;
 
     int rngWeaponSpawnAmount;
 
@@ -17,6 +19,8 @@ public class Player : MonoBehaviour
     public int currentLvl = 1;
     public int exp;
     public int expToLvl;
+    private int hp;
+    private int maxHP = 20;
 
 
     private static Player Instance;
@@ -24,7 +28,7 @@ public class Player : MonoBehaviour
     public static Player GetInstance() => Instance;
     private void Awake()
     {
-        // Ensure only one instance of AudioManager exists
+        // Ensure only one instance of Player exists
         if (Instance == null)
         {
             Instance = this;
@@ -32,9 +36,11 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // If another AudioManager exists, destroy this one
+            // If another Player exists, destroy this one
             Destroy(gameObject);
         }
+        hp = maxHP;
+
     }
     void Start()
     {
@@ -117,8 +123,27 @@ public class Player : MonoBehaviour
 
         foreach (var weapon in weapons)
         {
-            
-            
+
+
+        }
+    }
+
+    void Die()
+    {
+        //put game over screen and stuff later
+        Audiomanager.GetInstance().sharedAudioSource.clip = deathSound;
+        Audiomanager.GetInstance().sharedAudioSource.Play();
+        Time.timeScale = 0f;
+
+    }
+
+    public void takeDMG(int value)
+    {
+        hp -= value;
+        Debug.Log("Player hp :" + hp);
+        if (hp <= 0)
+        {
+            Die();
         }
     }
 }

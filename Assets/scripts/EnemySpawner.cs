@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [SerializeField] Player player;
-    [SerializeField] enemy[] enemyType = new enemy[20];
+    [SerializeField] Enemy[] enemyType = new Enemy[20];
 
 
     Vector2 randomPosition = new Vector2(3,3); //make it random later

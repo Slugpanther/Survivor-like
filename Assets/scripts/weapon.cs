@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class weapon : MonoBehaviour, IPoolable //probably make a interface?
+public class Weapon : MonoBehaviour, IPoolable //probably make a interface?
 {
 
     //apply the buffs to base stats of the weapon
@@ -18,7 +18,7 @@ public class weapon : MonoBehaviour, IPoolable //probably make a interface?
 
     public void Reset()
     {
-        
+
     }
     public void LevelUpWeapon() //make it virtual when interface?
     {
@@ -30,7 +30,7 @@ public class weapon : MonoBehaviour, IPoolable //probably make a interface?
         Collider2D hitCollider = collision.collider;
         if (hitCollider.gameObject.tag == "Enemy")
         {
-            enemy hitEnemy = hitCollider.gameObject.GetComponent<enemy>();
+            Enemy hitEnemy = hitCollider.gameObject.GetComponent<Enemy>();
             hitEnemy.TakeDMG(dmg);
             Debug.Log("Damage");
         }

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(weapon))]
+[RequireComponent(typeof(Weapon))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class scythe : MonoBehaviour
+public class Scythe : MonoBehaviour
     //public class scythe : weapon
 {
     Rigidbody2D rb;
-    weapon wp;
+    Weapon wp;
 
     public void Reset()
     {
         wp.durationTimer = 5f;
     }
 
-    public void lvlUp() //specifiy those when doing balance tests
+    public void LvlUp() //specifiy those when doing balance tests
     {
         wp.dmg++;
         wp.scale += 1.5f;
@@ -25,13 +25,13 @@ public class scythe : MonoBehaviour
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
-        wp = GetComponent<weapon>();
+        wp = GetComponent<Weapon>();
         wp.durationTimer = 5f;
 
         //Scale weapons ONLY FOR LAB
         for (int i = 1; i < Player.GetInstance().currentLvl; i++)
         {
-            lvlUp();
+            LvlUp();
         }
         Debug.Log("Scythe dmg: " + wp.dmg);
 

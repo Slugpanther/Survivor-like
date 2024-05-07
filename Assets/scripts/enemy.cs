@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private int hp = 1;
     private int dmg = 1;
@@ -13,7 +13,6 @@ public class enemy : MonoBehaviour
     [SerializeField] private int maxHP = 1;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private GameObject expGem;
-    private AudioSource audioSource;
 
     Rigidbody2D rb;
     Vector2 direction;
@@ -26,20 +25,6 @@ public class enemy : MonoBehaviour
         player = Player.GetInstance();
         hp = maxHP;
 
-        // Find AudioManager in the scene
-        Audiomanager audioManager = Audiomanager.GetInstance();
-        
-        //add player level observer to call ScaleStats(player.currentLvl)
-
-        if (audioManager != null)
-        {
-            // Access the shared AudioSource from AudioManager
-            audioSource = audioManager.sharedAudioSource;
-        }
-        else
-        {
-            Debug.LogError("AudioManager not found in the scene!");
-        }
     }
 
     private void OnEnable()
@@ -47,7 +32,7 @@ public class enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ScaleStats(Player.GetInstance().currentLvl);
         hp = maxHP;
-        
+
     }
     // Update is called once per frame
     void Update()
@@ -61,7 +46,7 @@ public class enemy : MonoBehaviour
             direction = (player.transform.position - gameObject.transform.position).normalized;
             rb.velocity = direction * moveSpeed;
         }
-        
+
     }
 
     public void TakeDMG(int dmg)
@@ -71,9 +56,9 @@ public class enemy : MonoBehaviour
 
     public void ScaleStats(int playerLvl)
     {
-        maxHP = maxHP + 1 + playerLvl * 2;
+        maxHP += 1 + playerLvl * 2;
         Debug.Log("HP: " + maxHP);
-        moveSpeed = moveSpeed + (int)playerLvl/5; //scale move a tout les 5 lvls
+        moveSpeed += (int)playerLvl / 5; //scale move a tout les 5 lvls
     }
 
     void Die()
@@ -81,9 +66,18 @@ public class enemy : MonoBehaviour
         GameObject ExpGem = ObjectPool.GetInstance().GetPooledObject(expGem);
         ExpGem.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
         ExpGem.SetActive(true);
-        audioSource.clip = deathSound;
-        audioSource.Play();
+        Audiomanager.GetInstance().sharedAudioSource.clip = deathSound;
+        Audiomanager.GetInstance().sharedAudioSource.Play();
         Destroy(gameObject);
         //gameObject.setActive(false) when pooled;
+    }
+
+    //Triggers on enter only, needs to check for every 1/3 second
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == Player.GetInstance().tag)
+        {
+            Player.GetInstance().takeDMG(dmg);
+        }
     }
 }

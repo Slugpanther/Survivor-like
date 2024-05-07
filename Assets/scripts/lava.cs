@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(weapon))]
+[RequireComponent(typeof(Weapon))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class lava : MonoBehaviour
+public class Lava : MonoBehaviour
 
 {
     Rigidbody2D rb;
-    weapon wp;
+    Weapon wp;
     
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
-        wp = GetComponent<weapon>();
+        wp = GetComponent<Weapon>();
         wp.durationTimer = 8f;
 
         // Generate a random direction vector

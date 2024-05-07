@@ -174,7 +174,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   forwardWeaponSpawn: {fileID: 2083890567816705149}
+  deathSound: {fileID: 8300000, guid: 9b2e20b120694db428ed2ce2f84123db, type: 3}
   currentLvl: 1
+  exp: 0
   expToLvl: 0
 --- !u!50 &8807917760843944340
 Rigidbody2D:
