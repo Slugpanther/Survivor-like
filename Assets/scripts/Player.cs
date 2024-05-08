@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public int exp;
     public int expToLvl;
     private int hp;
-    private int maxHP = 20;
+    private int maxHP = 50;
 
 
     private static Player Instance;
@@ -55,8 +55,7 @@ public class Player : MonoBehaviour
         {
             rngWeaponSpawnAmount = Random.Range(1, 11);
 
-
-            for (int i = 0; i < rngWeaponSpawnAmount; i++)
+            for (int i = 0; i < rngWeaponSpawnAmount; i++) //fix this later
             {
                 GameObject wpToSpawn = ObjectPool.GetInstance().GetPooledObject(weapons[0]); //gets anything from the pool
                 wpToSpawn.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
@@ -64,6 +63,8 @@ public class Player : MonoBehaviour
                 //Instantiate(weapons[0], gameObject.transform.position, Quaternion.identity);
                 //new List<GameObject>().Add(weapons[0]);
             }
+
+
         }
         if (weapons[1]) { }
 

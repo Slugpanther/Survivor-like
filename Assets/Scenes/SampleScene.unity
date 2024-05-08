@@ -396,6 +396,7 @@ MonoBehaviour:
   - {fileID: 3632270348597656099, guid: 583fa2daa4d406d4f83073fe8c34458d, type: 3}
   - {fileID: 3632270348597656099, guid: ca6c3594215c51c49ae39a109bc92679, type: 3}
   - {fileID: 3632270348597656099, guid: 3ade770d67e4e624a9a9bc961c2077f2, type: 3}
+  - {fileID: 2599779017507082222, guid: befc8317a752c2343ab6b192e4bacea0, type: 3}
 --- !u!4 &326003340
 Transform:
   m_ObjectHideFlags: 0
@@ -1330,6 +1331,12 @@ MonoBehaviour:
     pooledObjects: []
   - objectToPool: {fileID: 8759152817728326273, guid: dd9c0880308ac494995dae596b010353, type: 3}
     poolCount: 200
+    pooledObjects: []
+  - objectToPool: {fileID: 8759152817728326273, guid: 78beefa8f87709244b654a7f900e2253, type: 3}
+    poolCount: 200
+    pooledObjects: []
+  - objectToPool: {fileID: 1383804800259771555, guid: b823bb790246a064c81b3262332fec9c, type: 3}
+    poolCount: 100
     pooledObjects: []
 --- !u!4 &2136146270
 Transform:

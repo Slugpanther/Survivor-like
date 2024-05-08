@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5429649668711802744}
   - component: {fileID: 2305311693784107085}
-  - component: {fileID: 6877707524105130330}
-  - component: {fileID: 4827106803967933223}
   - component: {fileID: 7368495666714711172}
+  - component: {fileID: 8740926240996672393}
   m_Layer: 0
   m_Name: lava
   m_TagString: Untagged
@@ -30,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.124, y: -0.007, z: 0}
-  m_LocalScale: {x: 3.2686, y: 3.2686, z: 3.2686}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3074835809441872856}
@@ -71,37 +70,6 @@ CircleCollider2D:
   m_Offset: {x: -0.022559846, y: 0}
   serializedVersion: 2
   m_Radius: 0.111466944
---- !u!114 &6877707524105130330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383804800259771555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af5f33d55b5f504193ff1e1ed155543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4827106803967933223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383804800259771555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137920e311cb8e84bbea14fd0d9baa18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmg: 2
-  baseTimer: 0
-  timer: 0
-  scale: 0
-  projectileSpeed: 0
-  durationTimer: 0
-  timeAlive: 0
 --- !u!50 &7368495666714711172
 Rigidbody2D:
   serializedVersion: 4
@@ -129,6 +97,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8740926240996672393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383804800259771555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e939e29b7fdd0d4792969ab66ade42d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTimer: 5
+  durationTimer: 0
+  projectileSpeed: 1.5
 --- !u!1 &8700909824329332394
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 8700909824329332394}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.061, y: -0.001, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.27522}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -226,4 +209,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4b12807a4f3a04ba6851e2c4f45b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 2
+  rotationSpeed: 0.5

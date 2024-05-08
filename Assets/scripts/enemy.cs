@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 {
     private int hp = 1;
     private int dmg = 1;
-    private int moveSpeed = 1;
+    public float moveSpeed = 1;
     [SerializeField] private int maxHP = 1;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private GameObject expGem;
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update()
+    protected virtual void FixedUpdate()
     {
         if (hp <= 0)
         {
@@ -48,8 +48,8 @@ public class Enemy : MonoBehaviour
         }
 
     }
-
-    public void TakeDMG(int dmg)
+    public virtual void Attack() { }
+    public virtual void TakeDMG(int dmg)
     {
         hp -= dmg;
     }
@@ -58,14 +58,18 @@ public class Enemy : MonoBehaviour
     {
         maxHP += 1 + playerLvl * 2;
         Debug.Log("HP: " + maxHP);
-        moveSpeed += (int)playerLvl / 5; //scale move a tout les 5 lvls
+        moveSpeed += (int)playerLvl / 4; //scale move a tout les 4 lvls
     }
 
-    void Die()
+    public virtual void Die()
     {
         GameObject ExpGem = ObjectPool.GetInstance().GetPooledObject(expGem);
-        ExpGem.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
-        ExpGem.SetActive(true);
+        if (ExpGem != null)
+        {
+            ExpGem.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+            ExpGem.SetActive(true);
+        }
+        
         Audiomanager.GetInstance().sharedAudioSource.clip = deathSound;
         Audiomanager.GetInstance().sharedAudioSource.Play();
         Destroy(gameObject);

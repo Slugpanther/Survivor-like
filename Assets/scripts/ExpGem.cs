@@ -29,13 +29,12 @@ public class ExpGem : MonoBehaviour, IPoolable
         Collider2D hitCollider = collision;
         if (hitCollider.gameObject.tag == "Player") 
         {
-            player.GainExp(value);
+            Player.GetInstance().GainExp(value);
             gameObject.SetActive(false);
         }
     }
 
     public void Reset()
     {
-        
     }
 }

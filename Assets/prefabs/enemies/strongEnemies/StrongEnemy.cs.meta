@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fc7717e2cac996841a5d547c070f0c3e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - deathSound: {instanceID: 0}
+  - expGem: {fileID: 8759152817728326273, guid: 78beefa8f87709244b654a7f900e2253, type: 3}
+  - weakpointPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,9 +12,17 @@ public class Weapon : MonoBehaviour, IPoolable //probably make a interface?
     [SerializeField] public float baseTimer;
     [SerializeField] public float timer;
     [SerializeField] public float scale;
+    [SerializeField] public int amount;
+    [SerializeField] public float interval;
     [SerializeField] public float projectileSpeed;
     [SerializeField] public float durationTimer = 5f; //lifespan
     [SerializeField] float timeAlive; //only for weapons that do something after x seconds other than destroy  
+
+    void Start()
+    {
+        //StartCoroutine(SpawnWeapon(this)); //watch out for this
+    }
+
 
     public void Reset()
     {
@@ -39,5 +47,21 @@ public class Weapon : MonoBehaviour, IPoolable //probably make a interface?
     void OnEnable()
     {
         gameObject.transform.localScale = new Vector3(scale, scale, 1);
+    }
+
+    public IEnumerator SpawnWeapon(Weapon weap)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+
+            //spawn weapon
+            for (int i = 0; i < amount; i++)
+            {
+                //code to add weapon below
+                yield return new WaitForSeconds(interval);
+            }
+
+        }
     }
 }
