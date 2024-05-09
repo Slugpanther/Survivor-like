@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
 {
-    [SerializeField] GameObject weakEnemy;
-    [SerializeField] GameObject strongEnemy;
+    [SerializeField] GameObject weakEnemy; //default weak enemy
+    [SerializeField] GameObject strongEnemy; //default strong enemy
 
     private static EnemyFactory Instance;
 

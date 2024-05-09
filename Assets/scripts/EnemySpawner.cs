@@ -48,12 +48,10 @@ public class EnemySpawner : MonoBehaviour
             Randomizeposition();
             for (int i = 0; i < rngEnemyAmount; i++) //change this to take out rng amount later?
             {
-                Instantiate(enemyType[randomEnemy], randomPosition, Quaternion.identity);
+                EnemyFactory.GetInstance().CreateWeakEnemy(enemyType[randomEnemy].gameObject, randomPosition);
+                //Instantiate(enemyType[randomEnemy], randomPosition, Quaternion.identity);
                 Randomizeposition();
 
-                //
-                // EnemyFactory.GetInstance().CreateWeakEnemy(enemyType[randomEnemy], randomPosition);
-                //
             }
             rngEnemyAmount = Random.Range(0, 7);
             randomEnemy = Random.Range(0, enemyType.Length);

@@ -706,6 +706,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642733407}
   m_CullTransparentMesh: 1
+--- !u!1 &1481337554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1481337555}
+  m_Layer: 0
+  m_Name: musicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1481337555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481337554}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.50885, y: -7.980078, z: 0.21929942}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1508167950
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1629938849}
+  - component: {fileID: 1629938850}
   m_Layer: 0
   m_Name: EnemyFactory
   m_TagString: Untagged
@@ -805,6 +837,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1629938850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629938848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785c90c1cf39dee4fbe9cf572d9e8514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weakEnemy: {fileID: 3841481686932104819, guid: 3ade770d67e4e624a9a9bc961c2077f2, type: 3}
+  strongEnemy: {fileID: 3841481686932104819, guid: befc8317a752c2343ab6b192e4bacea0, type: 3}
 --- !u!1 &1869599713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,8 +1457,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 20288b84a4cc5494087f920fa8d40199, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.1254902}
+  m_Sprite: {fileID: 21300000, guid: fe0894ad63126184d99a7eb1d81905e0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.83137256}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1431,8 +1477,8 @@ Transform:
   m_GameObject: {fileID: 2141163636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -0.1, z: 5}
-  m_LocalScale: {x: 2.7698362, y: 3.1000953, z: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 100}
+  m_LocalScale: {x: 13.028975, y: 6.3575115, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1520,3 +1566,4 @@ SceneRoots:
   - {fileID: 1942741913}
   - {fileID: 1508167953}
   - {fileID: 1629938849}
+  - {fileID: 1481337555}
