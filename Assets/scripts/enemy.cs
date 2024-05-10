@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
         hp = maxHP;
 
     }
-    // Update is called once per frame
+
     protected virtual void FixedUpdate()
     {
         if (hp <= 0)

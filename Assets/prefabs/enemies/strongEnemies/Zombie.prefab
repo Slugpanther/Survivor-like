@@ -106,7 +106,7 @@ Rigidbody2D:
     m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &5980748091386813220
 MonoBehaviour:
@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7717e2cac996841a5d547c070f0c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  moveSpeed: 10
+  maxHP: 15
   deathSound: {fileID: 8300000, guid: a209e45519bad2c4c8779a754c69c8ee, type: 3}
   expGem: {fileID: 8759152817728326273, guid: 78beefa8f87709244b654a7f900e2253, type: 3}
   weakpointPrefab: {fileID: 901280096477221275, guid: 39ce91d00e788a948b65ba93a966c356, type: 3}
@@ -145,7 +146,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,7 +172,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -189,8 +190,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.7610062, g: 0.66556495, b: 0.20341347, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.8113208, g: 0.12501466, b: 0.12501466, a: 1}
+      key1: {r: 0.9748427, g: 0.02145864, b: 0.02145864, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

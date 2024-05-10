@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa2c852b4ae8434da58a0bf627f15a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 5
   maxHP: 5
   deathSound: {fileID: 8300000, guid: a209e45519bad2c4c8779a754c69c8ee, type: 3}
   expGem: {fileID: 8759152817728326273, guid: 78beefa8f87709244b654a7f900e2253, type: 3}

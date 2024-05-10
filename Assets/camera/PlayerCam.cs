@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameObject player;
+
     void Start()
     {
-        
+        player = Player.GetInstance().gameObject;
+    }
+
+    private void FixedUpdate()
+    {
+        var pos = player.transform.position;
+        pos.z = -10;
+        transform.position = pos;
     }
 }

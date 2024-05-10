@@ -12,13 +12,16 @@ public class EnemySpawner : MonoBehaviour
     Vector2 randomPosition = new Vector2(3,3); //make it random later
     int randomEnemy = 0;
     int rngEnemyAmount = 2;
+    int rngStrongEnemyAmount = 2;
     float randomAngle;
     float randomDistance;
-    float minDistance = 4f;
-    float maxDistance = 6f;
+    float minDistance = 4.5f;
+    float maxDistance = 6.5f;
     Vector2 spawnOffset;
 
-    float spawnTime = 4;
+    int strongOrWeak;
+
+    [SerializeField] float spawnTime = 4;
     //float timer = 0;
     // Start is called before the first frame update
     void Start()
@@ -46,14 +49,35 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             Randomizeposition();
-            for (int i = 0; i < rngEnemyAmount; i++) //change this to take out rng amount later?
+            strongOrWeak = Random.Range(0, 2);
+            if (strongOrWeak == 0)
             {
-                EnemyFactory.GetInstance().CreateWeakEnemy(enemyType[randomEnemy].gameObject, randomPosition);
-                //Instantiate(enemyType[randomEnemy], randomPosition, Quaternion.identity);
-                Randomizeposition();
+                for (int i = 0; i < rngEnemyAmount; i++) //change this to take out rng amount later?
+                {
+                    EnemyFactory.GetInstance().CreateRandomWeakEnemy(randomPosition); //ce que le prof m'a demander ==FORCE PLUSIEURS TYPES D'ENNEMIS DIFFERENT A SPAWN
 
+                    //EnemyFactory.GetInstance().CreateWeakEnemy(enemyType[randomEnemy].gameObject, randomPosition); //what I had before
+                    Randomizeposition();
+
+                }
+                strongOrWeak = Random.Range(0, 2);
             }
-            rngEnemyAmount = Random.Range(0, 7);
+            else 
+            {
+
+                for (int i = 0; i < rngStrongEnemyAmount; i++) //change this to take out rng amount later?
+                {
+                    EnemyFactory.GetInstance().CreateRandomStrongEnemy(randomPosition); //ce que le prof m'a demander
+
+                    //EnemyFactory.GetInstance().CreateStrongEnemy(enemyType[randomEnemy].gameObject, randomPosition); //what I had before
+                    Randomizeposition();
+
+                }
+                strongOrWeak = Random.Range(0, 2);
+            }
+            
+            rngEnemyAmount = Random.Range(1, 7 + Player.GetInstance().currentLvl);
+            rngStrongEnemyAmount = Random.Range(1, 5);
             randomEnemy = Random.Range(0, enemyType.Length);
 
 

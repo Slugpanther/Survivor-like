@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
 {
-    [SerializeField] GameObject weakEnemy; //default weak enemy
-    [SerializeField] GameObject strongEnemy; //default strong enemy
-
+    [SerializeField] GameObject[] weakEnemy; //default weak enemy --> devenu un array pour le projet
+    [SerializeField] GameObject[] strongEnemy; //default strong enemy
+    int randomEnemy;
+    int weakLength = 0;
+    int strongLength = 0;
     private static EnemyFactory Instance;
 
     public static EnemyFactory GetInstance() => Instance;
@@ -25,14 +27,33 @@ public class EnemyFactory : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public GameObject CreateWeakEnemy()
+    private void Start()
     {
-        return Instantiate(weakEnemy, Vector3.zero, Quaternion.identity);
+        for (int i = 0;i < weakEnemy.Length; i++)
+        {
+            if (weakEnemy[i] != null)
+            {
+                weakLength++;
+            }
+        }
+        for (int i = 0; i < strongEnemy.Length; i++)
+        {
+            if (strongEnemy[i] != null)
+            {
+                strongLength++;
+            }
+        }
     }
-    public GameObject CreateWeakEnemy(Vector2 position)
+
+    public GameObject CreateRandomWeakEnemy()
     {
-        return Instantiate(weakEnemy, position, Quaternion.identity);
+        randomEnemy = Random.Range(0, weakLength);
+        return Instantiate(weakEnemy[randomEnemy], Vector3.zero, Quaternion.identity);
+    }
+    public GameObject CreateRandomWeakEnemy(Vector2 position)
+    {
+        randomEnemy = Random.Range(0, weakLength);
+        return Instantiate(weakEnemy[randomEnemy], position, Quaternion.identity);
     }
 
     public GameObject CreateWeakEnemy(GameObject myEnemy)
@@ -45,9 +66,27 @@ public class EnemyFactory : MonoBehaviour
         return Instantiate(myEnemy, position, Quaternion.identity);
     }
 
-    public GameObject CreateStrongEnemy()
+    public GameObject CreateRandomStrongEnemy()
     {
-        return Instantiate(strongEnemy, Vector3.zero, Quaternion.identity);
+        randomEnemy = Random.Range(0, strongLength);
+        return Instantiate(strongEnemy[randomEnemy], Vector3.zero, Quaternion.identity);
+    }
+    public GameObject CreateRandomStrongEnemy(Vector2 position)
+    {
+        randomEnemy = Random.Range(0, strongLength);
+        return Instantiate(strongEnemy[randomEnemy], position, Quaternion.identity);
+    }
+
+
+    //these only for scripted spawns
+    public GameObject CreateStrongEnemy(GameObject myEnemy)
+    {
+        return Instantiate(myEnemy, Vector3.zero, Quaternion.identity);
+    }
+
+    public GameObject CreateStrongEnemy(GameObject myEnemy, Vector2 position)
+    {
+        return Instantiate(myEnemy, position, Quaternion.identity);
     }
 
 

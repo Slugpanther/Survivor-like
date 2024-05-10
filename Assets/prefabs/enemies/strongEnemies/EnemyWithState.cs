@@ -56,7 +56,7 @@ public class ChasingState : State
     }
     public override void OnStateUpdate()
     {
-        if (Vector3.Distance(stateMachine.enemy.transform.position, Player.GetInstance().transform.position) < 3f) //3f is the range
+        if (Vector3.Distance(Player.GetInstance().transform.position, stateMachine.enemy.transform.position) < 2f) //3f is the range
         {
             stateMachine.Transition<AttackingState>();
         }
@@ -87,7 +87,7 @@ public class AttackingState : State
     {
         Debug.Log("Attacking");
         //stateMachine.enemy.spriteRenderer.color = Color.blue;
-        timer = 1.5f;
+        timer = 0.5f;
         stateMachine.enemy.Attack();
         stateMachine.enemy.moveSpeed = 0f;
     }
@@ -120,6 +120,11 @@ public class EnemyWithState : Enemy
     private void Update()
     {
         stateMachine.Update();
+    }
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
     }
     public override void Attack()
     {

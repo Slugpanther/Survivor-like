@@ -14,7 +14,7 @@ public class StrongEnemy : Enemy
     {
         weakpoint = Instantiate(weakpointPrefab, transform.position, Quaternion.identity).GetComponent<WeakPointEnemy>();
         weakpoint.original = this;
-        lineRenderer = weakpoint.GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
         UpdateLine();
     }
 
@@ -27,7 +27,7 @@ public class StrongEnemy : Enemy
     void UpdateLine()
     {
         lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, transform.position);
+        lineRenderer.SetPosition(1, weakpoint.transform.position);
     }
 
     public override void Die()
