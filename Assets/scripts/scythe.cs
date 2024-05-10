@@ -14,6 +14,7 @@ public class Scythe : MonoBehaviour
     public void Reset()
     {
         wp.durationTimer = 5f;
+        wp.scale = 1f;
     }
 
     public void LvlUp() //specifiy those when doing balance tests

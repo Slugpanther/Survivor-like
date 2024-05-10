@@ -21,6 +21,7 @@ public class StrongEnemy : Enemy
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        Debug.Log(base.player);
         UpdateLine();
     }
 

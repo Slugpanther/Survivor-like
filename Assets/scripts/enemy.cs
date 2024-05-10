@@ -14,9 +14,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private GameObject expGem;
 
-    Rigidbody2D rb;
-    Vector2 direction;
-    private Player player;
+    protected Rigidbody2D rb;
+    protected Vector2 direction;
+    protected Player player;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +41,9 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
-        if (player != null)
+        if (Player.GetInstance() != null)
         {
-            direction = (player.transform.position - gameObject.transform.position).normalized;
+            direction = (Player.GetInstance().transform.position - gameObject.transform.position).normalized;
             rb.velocity = direction * moveSpeed;
         }
 

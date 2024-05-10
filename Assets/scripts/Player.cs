@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     //make it singleton?
     Rigidbody2D rb;
+    Animator animator;
     [SerializeField] private float speed;
     [SerializeField] private GameObject[] weapons = new GameObject[8]; //change gameobject to access the attributes of weapon.cs
     [SerializeField] private Transform forwardWeaponSpawn;
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -101,6 +103,7 @@ public class Player : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
         rb.velocity = new Vector2(x, y) * speed;
+        animator.SetFloat("Speed", rb.velocity.magnitude);
     }
 
     public void GainExp(int value) //call this when collecting exp gems

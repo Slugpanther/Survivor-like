@@ -56,7 +56,7 @@ public class ChasingState : State
     }
     public override void OnStateUpdate()
     {
-        if (Vector3.Distance(Player.GetInstance().transform.position, stateMachine.enemy.transform.position) < 2f) //3f is the range
+        if (Vector3.Distance(stateMachine.enemy.transform.position, Player.GetInstance().transform.position) < 2f) //3f is the range
         {
             stateMachine.Transition<AttackingState>();
         }
@@ -124,6 +124,7 @@ public class EnemyWithState : Enemy
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        Debug.Log(base.player);
 
     }
     public override void Attack()
