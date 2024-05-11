@@ -124,7 +124,6 @@ public class EnemyWithState : Enemy
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        Debug.Log(base.player);
 
     }
     public override void Attack()

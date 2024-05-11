@@ -57,7 +57,6 @@ public class Enemy : MonoBehaviour
     public void ScaleStats(int playerLvl)
     {
         maxHP += 1 + playerLvl * 2;
-        Debug.Log("HP: " + maxHP);
         moveSpeed += (int)playerLvl / 4; //scale move a tout les 4 lvls
     }
 

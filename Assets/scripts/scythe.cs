@@ -15,11 +15,13 @@ public class Scythe : MonoBehaviour
     {
         wp.durationTimer = 5f;
         wp.scale = 1f;
+        wp.amount = 1;
     }
 
     public void LvlUp() //specifiy those when doing balance tests
     {
         wp.dmg++;
+        wp.amount++;
         wp.scale += 1.5f;
     }
 

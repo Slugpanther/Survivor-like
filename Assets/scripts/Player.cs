@@ -9,8 +9,10 @@ public class Player : MonoBehaviour
     //make it singleton?
     Rigidbody2D rb;
     Animator animator;
+    bool isRunning;
+
     [SerializeField] private float speed;
-    [SerializeField] private GameObject[] weapons = new GameObject[8]; //change gameobject to access the attributes of weapon.cs
+    [SerializeField] private Weapon[] weapons = new Weapon[8]; //change gameobject to access the attributes of weapon.cs
     [SerializeField] private Transform forwardWeaponSpawn;
     [SerializeField] private AudioClip deathSound;
 
@@ -47,11 +49,15 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        StartCoroutine(SpawnWeapon());
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
+        /*
         //for lab only
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -68,23 +74,53 @@ public class Player : MonoBehaviour
 
 
         }
-        if (weapons[1]) { }
 
-
-
-
-        /*
-        foreach (var weapon in weapons) {
-            weapon.timer -= Time.deltatime;
-            if(weapon.timer <= 0){
-                Instantiate(weapon, transform.position, Quaternion.identity); //add proper movement/rotation/scale based on the weapon stats and modifiers
-                weapon.timer += weapon.baseTimer;
-            }
-        }
         */
+
     }
 
-    void AddWeapon(GameObject newWeapon)
+    public IEnumerator SpawnWeapon()
+    {
+        Debug.Log("into spawn weapon");
+        while (true)
+        {
+            /*
+            foreach (var weapon in weapons)
+            {
+                yield return new WaitForSeconds(weapon.baseTimer);
+
+                //spawn weapon
+                for (int i = 0; i < weapon.amount; i++)
+                {
+                    //code to add weapon below
+
+                    GameObject wpToSpawn = ObjectPool.GetInstance().GetPooledObject(weapon); //gets anything from the pool
+                    wpToSpawn.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+                    wpToSpawn.SetActive(true);
+                    yield return new WaitForSeconds(weapon.interval);
+                }
+            }
+            */
+
+            yield return new WaitForSeconds(weapons[0].baseTimer);
+
+            //spawn weapon
+            for (int i = 0; i < weapons[0].amount; i++)
+            {
+                //code to add weapon below
+
+                GameObject wpToSpawn = ObjectPool.GetInstance().GetPooledObject(weapons[0].gameObject); //gets anything from the pool
+                wpToSpawn.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+                wpToSpawn.SetActive(true);
+                yield return new WaitForSeconds(weapons[0].interval);
+            }
+            
+
+        }
+    }
+
+
+    void AddWeapon(Weapon newWeapon)
     {
         bool spaceFound = false;
         for (int i = 0; i < weapons.Length && !spaceFound; i++)
@@ -103,13 +139,24 @@ public class Player : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
         rb.velocity = new Vector2(x, y) * speed;
-        animator.SetFloat("Speed", rb.velocity.magnitude);
+        if (x != 0 && Time.timeScale != 0)
+        {
+            transform.localScale = new Vector3(x > 0 ? -1 : 1, 1, 1);
+        }
+        if (rb.velocity != Vector2.zero)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+        animator.SetBool("IsRunning", isRunning);
     }
 
     public void GainExp(int value) //call this when collecting exp gems
     {
         exp += value;
-        Debug.Log(exp);
         if (exp >= expToLvl)
         {
             LevelUp();
