@@ -53,32 +53,6 @@ public class Player : MonoBehaviour
     }
 
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        //for lab only
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            rngWeaponSpawnAmount = Random.Range(1, 11);
-
-            for (int i = 0; i < rngWeaponSpawnAmount; i++) //fix this later
-            {
-                GameObject wpToSpawn = ObjectPool.GetInstance().GetPooledObject(weapons[0]); //gets anything from the pool
-                wpToSpawn.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
-                wpToSpawn.SetActive(true);
-                //Instantiate(weapons[0], gameObject.transform.position, Quaternion.identity);
-                //new List<GameObject>().Add(weapons[0]);
-            }
-
-
-        }
-
-        */
-
-    }
-
     public IEnumerator SpawnWeapon()
     {
         Debug.Log("into spawn weapon");

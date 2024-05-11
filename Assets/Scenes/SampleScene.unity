@@ -747,9 +747,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 97d821d4a3482eb4fa61bfbd94110ab5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f2f8533a9bb3d484fb66808c60efab3a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.173
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -843,37 +843,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.4782226, y: -6.375223, z: 0.26355356}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1481337554
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1481337555}
-  m_Layer: 0
-  m_Name: musicManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1481337555
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1481337554}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.50885, y: -7.980078, z: 0.21929942}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1703,7 +1672,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6, z: 100}
-  m_LocalScale: {x: 13.028975, y: 6.3575115, z: 1}
+  m_LocalScale: {x: 13.028975, y: 12.132039, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1721,9 +1690,13 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1515874105401792157, guid: 77403a6564a6b0d44aa6101a55333221, type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 4827106803967933223, guid: d40c40b25ca75f2419e3b5fa19b16895, type: 3}
+    - target: {fileID: 1515874105401792157, guid: 77403a6564a6b0d44aa6101a55333221, type: 3}
       propertyPath: weapons.Array.data[1]
       value: 
-      objectReference: {fileID: 1383804800259771555, guid: b823bb790246a064c81b3262332fec9c, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2083890567816705149, guid: 77403a6564a6b0d44aa6101a55333221, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.4
@@ -1834,5 +1807,4 @@ SceneRoots:
   - {fileID: 1942741913}
   - {fileID: 1508167953}
   - {fileID: 1629938849}
-  - {fileID: 1481337555}
   - {fileID: 955718976}
